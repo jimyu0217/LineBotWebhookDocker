@@ -10,7 +10,7 @@ using LineBotWebhook.Model;
 public class LineBotController : ControllerBase
 {
     private readonly HttpClient _httpClient;
-    private readonly string _channelAccessToken = "YOUR_LINE_CHANNEL_ACCESS_TOKEN"; // 使用你的Channel Access Token
+    private readonly string _channelAccessToken = "xxoGva8R8FCDmW6z6uBVmuO7sh/AXWvqL08bgJom7+TLm4ZG5H2elZWbunfwRjC4pifBQmzx7lOBA9MGJ/oeSS+gzE11+Ma1g6GTPOroUQFi1+1tKMDyOr0SOFML0+U2Xu8KLKNGuXoBoMfuKaFLXAdB04t89/1O/w1cDnyilFU="; // 使用你的Channel Access Token
 
     public LineBotController(HttpClient httpClient)
     {
