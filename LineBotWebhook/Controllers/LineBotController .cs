@@ -29,7 +29,7 @@ public class LineBotController : ControllerBase
                 var userMessage = eventData.Message.Text;
 
                 // 呼叫 Line API 回應訊息
-                await ReplyToLineAsync(replyToken, $"你說的是: {userMessage}");
+                await ReplyToLineAsync(replyToken, $"You said : {userMessage}");
             }
         }
 
