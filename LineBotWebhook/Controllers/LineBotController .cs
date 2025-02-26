@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using LineBotWebhook.Model;
 
-[Route("api/linebot")]
 [ApiController]
+[Route("api/linebot")]
 public class LineBotController : ControllerBase
 {
     private readonly HttpClient _httpClient;
