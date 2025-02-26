@@ -18,10 +18,22 @@ public class LineBotController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] object requestBody)
+    public async Task<IActionResult> Post([FromBody] LineWebhookRequest request)
     {
-        Console.WriteLine("收到 LINE Webhook：" + requestBody.ToString());
-        return Ok(); // 回傳 200 OK
+        // 處理 LINE Webhook 請求，回應訊息
+        foreach (var eventData in request.Events)
+        {
+            if (eventData.Type == "message")
+            {
+                var replyToken = eventData.ReplyToken;
+                var userMessage = eventData.Message.Text;
+
+                // 呼叫 Line API 回應訊息
+                await ReplyToLineAsync(replyToken, $"You said : {userMessage}");
+            }
+        }
+
+        return Ok();
     }
     
     private async Task ReplyToLineAsync(string replyToken, string message)
