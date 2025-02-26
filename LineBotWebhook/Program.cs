@@ -26,18 +26,20 @@
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 註冊控制器服務
-builder.Services.AddControllers(); // ✅ 這行必須加上，註冊 Controllers
+// 註冊 HttpClient 服務
+builder.Services.AddHttpClient();  //這行將註冊 HttpClient
+
+// 註冊 Controller 服務
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// 取得 Render 環境變數 PORT，若未設定則預設為 5000
-var port = Environment.GetEnvironmentVariable("PORT") ?? "4000";
+// 設置應用監聽 PORT
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
 app.Urls.Add($"http://0.0.0.0:{port}");
 
-// 確保註冊 Controller 的路由
-app.MapControllers(); // ✅ 讓 Controller 的路由生效
-
+app.MapControllers(); // 啟動 Controller 路由
 app.Run();
+
 
 
