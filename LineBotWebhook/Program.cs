@@ -25,16 +25,12 @@
 //app.Run();
 
 var builder = WebApplication.CreateBuilder(args);
-
-// 取得 Render 設定的 PORT（若無則預設為 5000）
-var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
-
 var app = builder.Build();
 
-// 綁定 Kestrel 伺服器到 0.0.0.0 並使用指定的 PORT
+// 取得 Render 環境變數 PORT，若未設定則預設為 5000
+var port = Environment.GetEnvironmentVariable("PORT") ?? "4000";
 app.Urls.Add($"http://0.0.0.0:{port}");
 
-app.MapGet("/", () => "Hello from Line Bot on Render!");
-
+app.MapControllers();
 app.Run();
 
